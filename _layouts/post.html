@@ -18,6 +18,7 @@ layout: default
 
 <section class="post-meta">
   <div class="post-date">{{ page.date | date: "%B %-d, %Y" }}</div>
+  <!-- 2018/08/13 Categories github page에서 jekyll-archives 연동되지 않아 잠정적으로 주석처리.
   <div class="post-categories">
   {% if page.categories.size > 0 %}in {% for cat in page.categories %}
     {% if site.jekyll-archives %}
@@ -27,12 +28,13 @@ layout: default
     {% endif %}
   {% endfor %}{% endif %}
   </div>
+  -->
 </section>
 
 <article class="post-content">
   {{ content }}
 </article>
-
+<!-- 2018/08/13 Tags github page에서 jekyll-archives 연동되지 않아 잠정적으로 주석처리.
 {% if site.jekyll-archives %}
 {% if page.tags.size > 0 %}
 <section class="tags">
@@ -40,7 +42,7 @@ layout: default
 </section>
 {% endif %}
 {% endif %}
-
+-->
 <section class="rss">
   <p class="rss-subscribe text"><strong>Subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></strong></p>
 </section>

@@ -24,6 +24,7 @@ layout: default
     </section>
     <section class="post-meta">
       <div class="post-date">{{ post.date | date: "%B %-d, %Y" }}</div>
+	  <!-- 2018/08/13 Categories github page에서 jekyll-archives 연동되지 않아 잠정적으로 주석처리.
       <div class="post-categories">
       {% if post.categories.size > 0 %}in {% for cat in post.categories %}
         {% if site.jekyll-archives %}
@@ -33,6 +34,7 @@ layout: default
         {% endif %}
       {% endfor %}{% endif %}
       </div>
+	  -->
     </section>
   </li>
   {% if forloop.last == false %}
