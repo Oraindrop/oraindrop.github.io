@@ -1,6 +1,8 @@
 ---
 layout: post
 title:  "Windows OS Jekyll Install"
+categories: Jekyll
+tags: Jekyll windows ruby
 ---
 
 
@@ -34,11 +36,11 @@ title:  "Windows OS Jekyll Install"
 - 다른 버전을 설치해도 무관하나, Jekyll은 Ruby 2.x 이상 버전에서만 호환된다.
 
 - rubyinstaller-devkit-2.4.4-2-x64.exe 파일을 열어 설치한다. (그냥 Next만 눌렀다)
-	![1](https://github.com/Oraindrop/oraindrop.github.io/blob/master/_img/installRuby1.png?raw=true)
-	![2](https://github.com/Oraindrop/oraindrop.github.io/blob/master/_img/installRuby2.png?raw=true)
-	![3](https://github.com/Oraindrop/oraindrop.github.io/blob/master/_img/installRuby3.png?raw=true)
-	![4](https://github.com/Oraindrop/oraindrop.github.io/blob/master/_img/installRuby4.png?raw=true)
-	![5](https://github.com/Oraindrop/oraindrop.github.io/blob/master/_img/installRuby5.png?raw=true)	
+	![1](https://github.com/Oraindrop/oraindrop.github.io/blob/master/asset/_img/installRuby1.png?raw=true)
+	![2](https://github.com/Oraindrop/oraindrop.github.io/blob/master/asset/_img/installRuby2.png?raw=true)
+	![3](https://github.com/Oraindrop/oraindrop.github.io/blob/master/asset/_img/installRuby3.png?raw=true)
+	![4](https://github.com/Oraindrop/oraindrop.github.io/blob/master/asset/_img/installRuby4.png?raw=true)
+	![5](https://github.com/Oraindrop/oraindrop.github.io/blob/master/asset/_img/installRuby5.png?raw=true)	
 	
 - 커맨드 창을 연다 (Win + R > cmd)
 ```
@@ -151,7 +153,7 @@ gem
 	만약, 추가적인 error가 발생했다면 해당 메시지를 구글에서 검색하면 해결 가능하다.
 	
 - 이렇게 정상적으로 서비스가 구동되면 `http://localhost:4000/` 에서 `Your awesome blog`를 확인할 수 있다. <br><br>
-	![blog](https://github.com/Oraindrop/oraindrop.github.io/blob/master/_img/jekyll_local.png?raw=true)
+	![blog](https://github.com/Oraindrop/oraindrop.github.io/blob/master/asset/_img/jekyll_local.png?raw=true)
 
 ### 3. Posting	
 

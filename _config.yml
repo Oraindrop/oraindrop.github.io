@@ -48,8 +48,8 @@ disqus_shortname: choising-blog
 
 # Category descriptions (for archive pages)
 descriptions:
-  - cat: jekyll
-    desc: "Posts describing Jekyll setup techniques."  
+  - cat: Jekyll
+    desc: "Static Site Generator Jekyll"
     
   - cat: TIL
     desc: "Today I Learned"
