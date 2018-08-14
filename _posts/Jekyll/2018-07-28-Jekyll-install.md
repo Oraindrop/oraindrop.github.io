@@ -1,6 +1,7 @@
 ---
 layout: post
 title:  "Windows OS Jekyll Install"
+author : choising
 categories: Jekyll
 tags: Jekyll windows ruby
 ---
