@@ -53,6 +53,12 @@ descriptions:
     
   - cat: TIL
     desc: "Today I Learned"
+   
+  - cat: Tool
+    desc: "Just Tool"
+    
+  - cat: Java
+    desc: "Java Programming"
 
 # Social icons and sharing options
 #
