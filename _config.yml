@@ -59,6 +59,8 @@ descriptions:
     
   - cat: Jekyll
     desc: "Static Site Generator Jekyll"
+    
+  - cat: Algorithm
 
 # Social icons and sharing options
 #
