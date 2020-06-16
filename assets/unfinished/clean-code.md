@@ -1,3 +1,11 @@
+---
+layout: post
+title:  "클린코드"
+author : choising
+categories: book
+tags: book 
+---
+
 # 클린코드 (~ 225p)
 
 ## 오류 처리
