@@ -6,7 +6,7 @@ author : choising
 tags: java, book, es
 ---
 
-# Elasticsearch in action (~ 47p)
+# Elasticsearch in action (~ 98p)
 
 ## 1장 일래스틱서치 소개
 
@@ -136,5 +136,83 @@ tags: java, book, es
 
 ### 실습
 
-- ES 설치 후 실습 ㄱㄱ
+- Windows 에서 안되던게 Mac 으로 뚝딱 된다. Mac 짱짱
+    - install
+        ```
+        brew install elasticsearch
+        ```
+    
+    - run
+        ```
+        elasticsearch
+        ```
+    
+    - get-together index 의 group type 문서를 올려보기
+        ```
+        curl -X PUT 'localhost:9200/get-together/group/1?pretty' \
+            -H 'Content-Type: application/json;charset=UTF-8' \
+            -d ' {
+                "name": "Elasticsearch Denver",
+                "organizer": "Lee"
+                }'
+        ```
+    
+    - new-index 인덱스 생성해보기
+        ```
+        curl -H 'Content-Type: application/json;charset=UTF-8' \
+            -X PUT 'localhost:9200/new-index'
+        ```
+    
+    - https://github.com/dakrone/elasticsearch-in-action -> clone -> ./populate.sh 
+        - 문제가 있네, es 버전이 달라서 신 버전부터는 String type 이 없어지고 text/keyword 타입으로 나누어졌고
+        - curl 요청 시 header 를 더 명확히 전달해야해서 sh 파일이 정상적으로 동작하지 않음
+    
+    - 데이터 검색 시 쿼리는 q=name:elasticsearch 처럼 특정 필드에 수행하지만, 모든 필드 검색을 원하는 경우 명시하지 않아도 된다.
+        - 이럴 경우 _all이라는 특정필드를 사용한다
+    
+    - 타입을 지정할 수도 있다. 아래에선 group과 event type 만 검색하겠다는 것
+        ```
+        curl "localhost:9200/get-together/group,event/_search?q=elasticsearch&pretty"
+        ```
+    - 모든 인덱스에서 검색하려면 색인명을 생략하는 것도 가능하다.
+    - 검색 응답은 검색 기준 일치하는 문서 뿐 아니라, 검색 성능이나 결과의 유사도를 확인하는 데 유용한 정보를 포함한다.
+        ```
+        {
+            "took" : 2          
+            "timed_out": false
+            // 요청이 얼마나 걸리고 타임아웃 발생여부
+            
+            "_shards" : {
+                "total" : 2,
+                "successful" : 2,
+                "failed" 0
+            }
+            // 몇 개의 샤드에 질의했는지
 
+            "hit" : {
+                "total" : 2  // 일치하는 문서 수
+                "max_score" : 0.9066504, // 일치하는 문서의 최대 점수
+                // 일치하는 모든 문서에 대한 통계
+
+                "hits" : { ... // 결과배열
+            }
+        }
+    - 전체 문서 수는 응답에서 보는 문서 수와 일치하지 않을 수도 있다. (결과 수가 10으로 limit 걸려있어서)
+    - hits 는 응답에서 보통 가장 관심있는 정보
+        ```
+        "hits" : [ {
+            "_index" : "get-together",
+            "_type" : "group",
+            "_id" : "3",
+            "_score" : 0.9066504,
+            "fields" : {
+                "location" : ["San Francisco, California, "USA"],
+                "name" : ["Elasticsearch San Francisco"]
+            }
+        }]
+        ```
+        - 어떤 필드를 원하는지 명시하지 않으면 _source 필드가 보인다
+    - 적절한 쿼리타입 선택
+        - 다양한 다른 형태의 쿼리가 존재한다.
+        - 쿼리는 결과를 돌려주고 각 결과는 점수가 있다.
+        - 점수에 관심이 없다면, `필터 쿼리`를 대신 실행할 수 있다.
