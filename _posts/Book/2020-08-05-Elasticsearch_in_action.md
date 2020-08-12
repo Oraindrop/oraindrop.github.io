@@ -6,7 +6,7 @@ author : choising
 tags: java, book, es
 ---
 
-# Elasticsearch in action (~ 98p)
+# Elasticsearch in action (~ 138p)
 
 ## 1장 일래스틱서치 소개
 
@@ -17,13 +17,16 @@ tags: java, book, es
 - 일래스틱서치 클러스터를 색인, 검색, 관리하기 위해 데이터를 JSON 형태로 HTTP를 통해 전달할 수 있다.
 
 - rawdata
+
     ID | 태그 
     ---|:---:
     1 | 투표 
     2 | 평화
     3 | 투표, 평화
     4 | 평화
+
 - 색인 데이터
+
     태그 | ID
     ---|:---:
     투표 | 1, 3
