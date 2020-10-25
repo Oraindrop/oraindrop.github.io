@@ -52,3 +52,21 @@ tags: spring, java
     - 유연성, 재사용성. 변경가능성 증가
 
 - 즉 최대한 구체적인 것에 의존하지 않으면, 커플링은 느슨해진다.
+
+## What are Beans in Spring?
+
+- 스프링 컨테이너에 의해 만들어지고 관리되는 객체
+    - 컴포넌트 스캐닝이나, 직접 Bean 으로 등록된 객체
+    - ApplicationContext 가 만들어서 그 안에 담고 있는 객체.
+    - Singleton, 한 번 생성된다.
+
+## Bean Creation Process
+
+- 크게 두 가지 방법으로 빈을 만든다.
+    1. Component Scanning
+        - @ComponentScan(@SpringBootApplication 은 내부적으로 컴포넌트 스캔을 사용함) 이 붙어있는 클래스가 있는 패키지에서부터 모든 하위 패키지의 클래스를 훑어보며 @Component 가 붙은 클래스를 찾는다.
+        - 의존성이 있으면 의존성이 있는 클래스의 Bean 도 생성
+        - 두 클래스 간에 연결
+    2. 직접 Bean 등록
+        - @Configurtation 아래에 @Bean 등록
+        - @Configuration 도 어차피 @Component 를 내부적으로 사용하기에 Component 스캐닝됨.
