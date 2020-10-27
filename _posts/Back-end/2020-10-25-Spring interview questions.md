@@ -16,6 +16,7 @@ tags: spring, java
 - @Component does not decouple the declaration of the bean from the class definition where as @Bean decouples the declaration of the bean from the class definition.
     - 이해가 잘 안되는데, @Component 는 클래스에 하나고, @Bean 은 메소드당 있으니 클래스와 Bean 의 선언이 분리되었다고 하는거려나.
 
+
 ## Tight Coupling vs Loose Coupling
 
 - A class 내부에서 다른 B class 또는 C Interface 를 이용할 때 A 가 B/C 에 의존한다, 디펜던시가 있다 라고 말한다.
@@ -53,12 +54,14 @@ tags: spring, java
 
 - 즉 최대한 구체적인 것에 의존하지 않으면, 커플링은 느슨해진다.
 
+
 ## What are Beans in Spring?
 
 - 스프링 컨테이너에 의해 만들어지고 관리되는 객체
     - 컴포넌트 스캐닝이나, 직접 Bean 으로 등록된 객체
     - ApplicationContext 가 만들어서 그 안에 담고 있는 객체.
     - Singleton, 한 번 생성된다.
+
 
 ## Bean Creation Process
 
