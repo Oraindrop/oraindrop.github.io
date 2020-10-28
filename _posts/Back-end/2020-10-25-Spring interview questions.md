@@ -6,7 +6,7 @@ author : choising
 tags: spring, java
 ---
 
-## @Bean vs @Component
+## 1. @Bean vs @Component
 
 - @Bean 은 Method level, @Component 는 Class level (ElementType.Type)
     - 이게 핵심인 것 같음 이게 중요한게, 그래서 3rd-party lib 같은 경우 클래스에 직접적으로 @Component 를 달 수가 없으니 팩토리클래스 같은걸 만들어서 메소드에 @Bean 어노테이션을 달고 객체를 return 하도록한다.
@@ -17,7 +17,7 @@ tags: spring, java
     - 이해가 잘 안되는데, @Component 는 클래스에 하나고, @Bean 은 메소드당 있으니 클래스와 Bean 의 선언이 분리되었다고 하는거려나.
 
 
-## Tight Coupling vs Loose Coupling
+## 2. Tight Coupling vs Loose Coupling
 
 - A class 내부에서 다른 B class 또는 C Interface 를 이용할 때 A 가 B/C 에 의존한다, 디펜던시가 있다 라고 말한다.
     - 이 때 A-B/C 간 커플링이 형성
@@ -55,7 +55,7 @@ tags: spring, java
 - 즉 최대한 구체적인 것에 의존하지 않으면, 커플링은 느슨해진다.
 
 
-## What are Beans in Spring?
+## 3. What are Beans in Spring?
 
 - 스프링 컨테이너에 의해 만들어지고 관리되는 객체
     - 컴포넌트 스캐닝이나, 직접 Bean 으로 등록된 객체
@@ -63,7 +63,7 @@ tags: spring, java
     - Singleton, 한 번 생성된다.
 
 
-## Bean Creation Process
+## 4. Bean Creation Process
 
 - 크게 두 가지 방법으로 빈을 만든다.
     1. Component Scanning
@@ -75,7 +75,7 @@ tags: spring, java
         - @Configuration 도 어차피 @Component 를 내부적으로 사용하기에 Component 스캐닝됨.
 
 
-## What is the importance of the annotation @Primary
+## 5. What is the importance of the annotation @Primary
 
 - @Component, @Bean 과 같이 쓰일 수 있다.
 
@@ -122,4 +122,4 @@ tags: spring, java
 - 객체간의 결합도를 줄이고 유연한 코드를 작성할 수 있게 돕는다.
     - 내가 코드레벨에서 `A a = new A()` 해버리면 아주 강결합인데,
     - 외부에서 `A a` 를 주입받으면 한 단계 추상화가 된 것이니깐.
-    
+
