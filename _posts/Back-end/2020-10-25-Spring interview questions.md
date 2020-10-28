@@ -73,3 +73,53 @@ tags: spring, java
     2. 직접 Bean 등록
         - @Configurtation 아래에 @Bean 등록
         - @Configuration 도 어차피 @Component 를 내부적으로 사용하기에 Component 스캐닝됨.
+
+
+## What is the importance of the annotation @Primary
+
+- @Component, @Bean 과 같이 쓰일 수 있다.
+
+- Component 스캔 시 Dependency Injection 과정에서 주입할 대상이 여러개여서 자동적으로 객체를 찾지 못하는 경우가 있다.
+
+- 예를들어 `Cleanable` 이라는 인터페이스가 있고, 
+    - `Broom` 클래스가 `implements Cleanable`
+    - `Tissue` 클래스도 `implements Cleanable`
+    - 위 상황에서
+        ```
+        @Autowired
+        Cleanable cleanable;
+        ```
+        - 이라는 코드가 있다면, `Broom` 클래스를 주입할 지, `Tissue` 클래스 주입할 지 정할 수 없다.
+
+- 가장 높은 우선순위를 가질 아이에게 `@Primary` 어노테이션을 달면 해결 가능하다.
+- 다시 말해 DI 시 여러개에 종속된 주입 대상이 있을 때 우선순위를 명시하기 위해 사용한다.
+
+
+## 6. What is Dependency Injection?
+
+- 객체의 의존성을 외부에서 주입하는 패턴
+
+- 스프링에서는 객체의 의존성을 스프링 프레임워크에서 주입한다. 
+    - IoC(Inversion Of Control), 제어의 역전
+        - 프로그램 제어권을 프레임워크가 가져가는 것
+        - IoC 는 DI를 통해 달성된다
+
+- Spring 이(스프링컨테이너가) Bean 을 찾고 종속성을 식별하고 인스턴스를 생성하여 자동으로 연결하는 프로세스
+
+
+## 7. Explain Inversion of Control (IOC)
+
+- DI 랑 세트메뉴
+
+- 개발자가 프로그램의 흐름을 주도하던 과거
+    - 객체의 생성부터 생명주기를 개발자가 관리
+
+- 스프링은 객체생명주기를 프레임워크가 주도하게 된다.
+    - 객체의 생성부터 생명주기를 프레임워크가 관리
+
+- 제어권이 넘어가서 제어의 역전
+
+- 객체간의 결합도를 줄이고 유연한 코드를 작성할 수 있게 돕는다.
+    - 내가 코드레벨에서 `A a = new A()` 해버리면 아주 강결합인데,
+    - 외부에서 `A a` 를 주입받으면 한 단계 추상화가 된 것이니깐.
+    
