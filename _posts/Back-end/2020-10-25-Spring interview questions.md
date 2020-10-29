@@ -123,3 +123,19 @@ tags: spring, java
     - 내가 코드레벨에서 `A a = new A()` 해버리면 아주 강결합인데,
     - 외부에서 `A a` 를 주입받으면 한 단계 추상화가 된 것이니깐.
 
+
+## 8. IOC (Inversion of Control) Container 역할
+
+- Bean Factory
+    - Bean 생성과 관계설정, 사용, 제거 담당
+    - Bean 을 찾아 의존관계를 설정하고, Bean 의 생명주기를 관리
+    - 즉 Bean(오브젝트) 의 제어권 담당
+
+- 코드레벨로 말하자면 IoC 컨테이너라고 말하는건 `ApplicationConetxt` Interface 를 구현한 클래스의 오브젝트
+
+
+## 9. Application Context 는 무엇?
+
+- BeanFactory 를 상속받고, 더 확장된 인터페이스
+- IoC 컨테이너에 이미 다 말해서 별로 할말이없음
+- 스프링의 IoC 컨테이너
