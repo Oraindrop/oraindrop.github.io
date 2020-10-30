@@ -139,3 +139,14 @@ tags: spring, java
 - BeanFactory 를 상속받고, 더 확장된 인터페이스
 - IoC 컨테이너에 이미 다 말해서 별로 할말이없음
 - 스프링의 IoC 컨테이너
+
+## 10. Spring 에서 Application Context 생성하는 과정
+
+- xml 이나 @Configuration 두 방법 중 하나로 구성
+- ClassPathXmlApplicationContext 를 사용하여 생성
+- ClassPathXmlApplicationContex 는 xml 파일을 찾거나, AnnotationConfigApplicationContext 를 사용하는 방법 둘 중 하나를 사용한다.
+
+## 11. Component Scan 설명
+
+- annotation 방법이면 @ComponentScan 위치(base 패키지) 아래에 있는 모든 @Component 어노테이션을 검색
+- xml 방법이면 <context : component-scan base-package =”com.demo.compscanex”/> 이런걸 쓴다고 함.
