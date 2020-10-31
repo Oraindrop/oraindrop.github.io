@@ -150,3 +150,16 @@ tags: spring, java
 
 - annotation 방법이면 @ComponentScan 위치(base 패키지) 아래에 있는 모든 @Component 어노테이션을 검색
 - xml 방법이면 <context : component-scan base-package =”com.demo.compscanex”/> 이런걸 쓴다고 함.
+
+## 12. Spring Boot 에서 Component Scan 은 어떻게?
+
+- 보통 @SpringBootApplication 이라는 어노테이션을 사용한다
+    - @ComponentScan과 @EnableAutoConfiguration 이 포함되어 있음
+    - 이 클래스 위치가 base package 가 되어 쭈욱 스캔
+
+## 13. @Component, @Repository @Service @Controller 비교
+
+- @Controller, @Service, @Repository 어노테이션은 @Component 어노테이션을 더 읽기 쉽도록 특정 상황에 Specific 하게 정의해 놓은 것
+
+- 예를들어 MVC 관점에서 클라이언트 통신의 최초시점은 @Component를 사용하는 대신 @Controller를 사용
+비지니스 로직을 담당하는 곳은 @Service, 일반적으로 DAO 라고 부르는 데이터베이스와 상호작용이 일어나는 부분은 @Repository를 사용하여 가독성을 높인다.
