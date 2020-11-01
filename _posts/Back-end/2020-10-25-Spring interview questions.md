@@ -140,16 +140,19 @@ tags: spring, java
 - IoC 컨테이너에 이미 다 말해서 별로 할말이없음
 - 스프링의 IoC 컨테이너
 
+
 ## 10. Spring 에서 Application Context 생성하는 과정
 
 - xml 이나 @Configuration 두 방법 중 하나로 구성
 - ClassPathXmlApplicationContext 를 사용하여 생성
 - ClassPathXmlApplicationContex 는 xml 파일을 찾거나, AnnotationConfigApplicationContext 를 사용하는 방법 둘 중 하나를 사용한다.
 
+
 ## 11. Component Scan 설명
 
 - annotation 방법이면 @ComponentScan 위치(base 패키지) 아래에 있는 모든 @Component 어노테이션을 검색
 - xml 방법이면 <context : component-scan base-package =”com.demo.compscanex”/> 이런걸 쓴다고 함.
+
 
 ## 12. Spring Boot 에서 Component Scan 은 어떻게?
 
@@ -157,9 +160,56 @@ tags: spring, java
     - @ComponentScan과 @EnableAutoConfiguration 이 포함되어 있음
     - 이 클래스 위치가 base package 가 되어 쭈욱 스캔
 
+
 ## 13. @Component, @Repository @Service @Controller 비교
 
 - @Controller, @Service, @Repository 어노테이션은 @Component 어노테이션을 더 읽기 쉽도록 특정 상황에 Specific 하게 정의해 놓은 것
 
 - 예를들어 MVC 관점에서 클라이언트 통신의 최초시점은 @Component를 사용하는 대신 @Controller를 사용
 비지니스 로직을 담당하는 곳은 @Service, 일반적으로 DAO 라고 부르는 데이터베이스와 상호작용이 일어나는 부분은 @Repository를 사용하여 가독성을 높인다.
+
+
+## 14. Spring Bean Scopes
+
+- 스프링에서 Bean으로 지정된 객체는 기본적으로 싱글톤 객체로 관리된다.
+
+- 하지만 요구사항 과 구현기능 등의 필요에 따라서 비싱글톤이 필요한 경우도 있고, 이를 명시적으로 구분하기 위하여 scope 이라는 키워드를 제공한다.
+
+- singleton, prototype, request, session 정도가 있다.
+
+- singleton
+    - 디폴트
+    - bean 은 spring 컨테이너에서 한 번 생성된다.
+    - 생성된 인스턴스를 single beans cache 에 저장하고, 요청과 참조가 있으면 캐시된 객체를 반환한다.
+
+- prototype
+    - bean 의 모든 요청에 새로운 객체를 생성한다.
+    - 즉, 의존성 관계의 bean에 주입될 때 새로운 객체가 생성되어 주입된다.
+    - 정상적인 방식으로 gc에 의해 bean이 제거된다.
+
+- request
+    - HTTP Request 별로 새로운 객체를 생성하고, 요청이 끝나면 소멸한다.
+
+- session
+    - HTTP 세션 별로 새로운 객체를 생성하고, 세션이 끝나면 소멸한다.
+
+
+## 15. DI 종류
+
+- Setter Injection, Constructor Injection, Field Injection
+
+- 피부에 와닿는 큰 장점을 느끼지 못해서 Field Injection 을 계속 사용하고 있으나 `Constructor Injection` 을 가장 클린코드에 가깝다고 생각하는 분위기인 것 같음
+
+- 여러 이유가 있겠지만, 객체 생성시점에 순환참조가 일어나는 지 확인할 수 있다는 장점은 수긍이 되었고, 테스트코드 생성 시에도 조금 이점이 있다는 것도 이해는 되었다!
+
+- Field Injection 은 매번 편하다는 것 빼고 장점이 없다는 글들이 많이 보이는데, 편리한것도 엄청 큰 장점 아닌가..?
+
+
+## 16. Configuration XML vs Annotation
+
+- Configuration 설정하는 두 가지 방법
+- xml 은 길다. 매번 많은 설정 파일을 작성해야함.
+    - `xml` 을 사용한다는 것 자체가 장점이 될 수 없을 것 같음
+    - 외부에 존재하고, 필요한 경우 이미 빌드한 결과에 재 컴파일 없이 xml 만 수정하여 변경사항을 적용할 수 있다는 장점이 있음
+- annotation 은 코드레벨로 확인할 수 있다는 점이 쉽게 판단할 수 있어 좋고, 코드의 양도 적은 편
+
