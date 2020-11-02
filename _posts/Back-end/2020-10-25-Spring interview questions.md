@@ -213,3 +213,33 @@ tags: spring, java
     - 외부에 존재하고, 필요한 경우 이미 빌드한 결과에 재 컴파일 없이 xml 만 수정하여 변경사항을 적용할 수 있다는 장점이 있음
 - annotation 은 코드레벨로 확인할 수 있다는 점이 쉽게 판단할 수 있어 좋고, 코드의 양도 적은 편
 
+
+## 17. Spring 의 Autowiring 방식들
+
+- byName, byType, constructor, no
+
+- byName : Spring 컨테이너가 이름과 동일한 빈을 찾는다.
+
+- byType : Spring 컨테이너가 클래스가 동일한 빈을 찾는다.
+
+- constructor : Spring 컨테이너가 생성자 기반으로 autowiring 한다.
+    - 방식은 byType 과 유사, 생성자의 arguments 클래스 유형을 찾은 다음 주입.
+
+- no : autowiring 을 사용하지 않는다.
+
+- SpringBoot 를 사용하고 있는 내가 @Autowired 해서 쓰는 건 byType으로 사용하고 있는 것이려나
+
+- @Qualifier 를 사용해서 name 을 지정해주면 byName 이 되는느낌
+
+
+## 18. Dirty Read 가 무엇?
+
+- 커밋되지 않은 데이터를 읽는 것이지 뭐
+
+- 하나의 트랜잭션 T1이 다른 트랜잭션 T2에 의해 변경된, 하지만 아직 커밋되지 않은 변경사항을 read 하는 것
+
+- dirty read 의 위험성은 이게 롤백될 수도 있는 데이터이기때문
+
+
+
+
