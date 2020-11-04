@@ -241,5 +241,36 @@ tags: spring, java
 - dirty read 의 위험성은 이게 롤백될 수도 있는 데이터이기때문
 
 
+## 19. Spring 4.0 과 5.0 의 새로운 기능
 
+- 4.0 이 Java 를 최초로 지원했고, 5.0 이 Reactive Programming 및 Kotlin 을 지원했다는데.. 그냥 대충 넘어가겠음
+
+
+## 20. Front Controller 란?
+
+- Front Controller = DispatchServlet 
+
+- HTTP Request 를 최초로 받는 친구
+
+- 매핑된 다른 컨트롤러로 위임
+
+
+## 21. ViewResolver 란?
+
+- 컨트롤러가 최종적으로 결과를 출력할 View를 리턴할 때, View 를 직접 리턴할 수 도 있지만, 매번 View를 생성하는 것은 비효율 적이므로 View 의 논리적인 이름인 String 만 return
+
+-  DispatchServlet 의 View Resolver가 이를 이용해 View Object 를 만들어 return
+
+- SpringBoot 에서도 일반적인 API 같은 json return 에서 그냥 @Controller를 사용할 경우 (@ResponseBody 도 사용하지 않을 경우) 역시 ViewResolver(BeanNameViewResolver) 에서 ViewName 에 해당하는 뷰를 찾으려고 시도
+
+- @RequestBody, @ResponseBody 가 있을 경우 `HttpMessageConverter` 를 사용한다. @RestController 에서는 @ResponseBody 가 자동으로 적용된다고 보면 됨.
+
+- 즉, @Controller
+    - Client -> DispatcherServlet -> Handler Mapping -> **Controller** -> **ViewResolver** -> **View**
+
+- @RestController
+    - Client -> DispatcherServlet -> Handler Mapping -> **MessageConverter** -> **HTTP Response** (application/json, text/plain 등)
+    - 대표적인 MessageConverter
+        - application/json : MappingJackson2HttpMessageConverter 
+        - application/xml 또는 text/xml : MarshallingHttpMessageConverter
 
