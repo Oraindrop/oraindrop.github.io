@@ -261,6 +261,8 @@ tags: spring, java
 
 -  DispatchServlet 의 View Resolver가 이를 이용해 View Object 를 만들어 return
 
+- 정리하면 ViewResolver 란 논리적인 이름과 맵핑되는 View 를 생성해주는 애. 라고 보면 될 듯
+
 - SpringBoot 에서도 일반적인 API 같은 json return 에서 그냥 @Controller를 사용할 경우 (@ResponseBody 도 사용하지 않을 경우) 역시 ViewResolver(BeanNameViewResolver) 에서 ViewName 에 해당하는 뷰를 찾으려고 시도
 
 - @RequestBody, @ResponseBody 가 있을 경우 `HttpMessageConverter` 를 사용한다. @RestController 에서는 @ResponseBody 가 자동으로 적용된다고 보면 됨.
