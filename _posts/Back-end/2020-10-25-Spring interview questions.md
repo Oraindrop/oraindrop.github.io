@@ -259,7 +259,7 @@ tags: spring, java
 
 - 컨트롤러가 최종적으로 결과를 출력할 View를 리턴할 때, View 를 직접 리턴할 수 도 있지만, 매번 View를 생성하는 것은 비효율 적이므로 View 의 논리적인 이름인 String 만 return
 
--  DispatchServlet 의 View Resolver가 이를 이용해 View Object 를 만들어 return
+- DispatchServlet 의 View Resolver가 이를 이용해 View Object 를 만들어 return
 
 - 정리하면 ViewResolver 란 논리적인 이름과 맵핑되는 View 를 생성해주는 애. 라고 보면 될 듯
 
@@ -275,4 +275,24 @@ tags: spring, java
     - 대표적인 MessageConverter
         - application/json : MappingJackson2HttpMessageConverter 
         - application/xml 또는 text/xml : MarshallingHttpMessageConverter
+
+
+## 22. Spring MVC 처리과정
+
+1. Client 의 Request 를 DispatcherServlet 이 받는다.
+
+2. DispatcherServlet 은 HandlerMapping 을 통해 적절한 Controller 를 찾아 위임한다.
+
+3. Controller 는 필요에 따라 의존성 주입된 Service 와 DB 데이터를 활용하여 결과를 만들어 Model 에 넣고 View Name 을 반환한다.
+
+4. DispatcherServlet 은 ViewResolver 를 활용하여 View 를 만들어 Response.
+
+
+23. @ModelAttribute 란?
+
+- 클라이언트의 Request Parameter 들을 객체로 바인딩 시키고, View 로 넘겨 사용 및 출력하기 위해 사용.
+
+- @RequestBody 의 경우 Http Request 의 Body 부분을 MessageConverter 를 활용하여 Java Object로 변환한다.
+
+- @ModelAttribute 는 완전 자바빈규약 즉 setter 만 활용하여 바인딩. 즉 얘는 세터가 없으면 매핑이 아예되지가 않음.
 
