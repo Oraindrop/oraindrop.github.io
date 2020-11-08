@@ -288,11 +288,26 @@ tags: spring, java
 4. DispatcherServlet 은 ViewResolver 를 활용하여 View 를 만들어 Response.
 
 
-23. @ModelAttribute 란?
+## 23. @ModelAttribute 란?
 
 - 클라이언트의 Request Parameter 들을 객체로 바인딩 시키고, View 로 넘겨 사용 및 출력하기 위해 사용.
 
 - @RequestBody 의 경우 Http Request 의 Body 부분을 MessageConverter 를 활용하여 Java Object로 변환한다.
 
 - @ModelAttribute 는 완전 자바빈규약 즉 setter 만 활용하여 바인딩. 즉 얘는 세터가 없으면 매핑이 아예되지가 않음.
+
+
+## 24. @SessionAttributes 란?
+
+- Model 정보를 HttpSession 에 저장
+
+- 클래스에 다는거라 Controller 에 주로 다는 것으로 보임
+
+- 컨트롤러에서 메서드가 생성하는 모델정보 중에서 @SessionAttirbutes("key") 라고 명시한 key 값과 동일한 것을 세션에 저장
+
+
+
+## 25. @InitBinder 란?
+
+- 특정 컨트롤러에서 바인딩 또는 검증 설정을 변경하고 싶을 때 설정값을 지정하려 사용
 
