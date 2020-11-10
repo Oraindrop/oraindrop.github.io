@@ -311,3 +311,23 @@ tags: spring, java
 
 - 특정 컨트롤러에서 바인딩 또는 검증 설정을 변경하고 싶을 때 설정값을 지정하려 사용
 
+
+
+## 26. @ControllerAdvice 란?
+
+- 여러 Controller 전반에 걸쳐 어떤 로직을 적용하고 싶을 때 사용
+
+- 보통은 @ExceptionHandler 와 함께 에러처리를 묶어서 하려 사용
+    - @ExceptionHandler 말고 @ModelAttribute, @InitBinder 도 사용할 수 있음
+
+- 별도 설정하지 않으면 모든 Controller 대상
+
+
+## 27. Why Spring Boot?
+
+- 스프링 어플리케이션을 구동하기 위해 많은 설정들이 자동으로 되어있어, 신속하게 설정할 수 있다.
+
+- 스프링부트의 AutoConfiguration 은 클래스 패스(경로)에 특정 클래스가 있는지 감지한 후 자동으로 모든 설정을 구성함.
+
+- 또 SpringBoot 의 특성으로는 내장 Tomcat
+
