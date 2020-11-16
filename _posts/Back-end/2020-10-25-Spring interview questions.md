@@ -331,3 +331,58 @@ tags: spring, java
 
 - 또 SpringBoot 의 특성으로는 내장 Tomcat
 
+
+## 28. Spring vs Spring MVC vs Spring Boot
+
+- Spring
+    - Spring 프레임워크의 가장 중요한 특징은 의존성 주입(DI, Dependency Injection)
+    - 모든 스프링 모듈들의 핵심에는 의존성 주입이나 IOC(Inversion of Control)가 있다.
+
+- Spring MVC
+    - Spring MVC 프레임워크는 **웹 애플리케이션 개발 방법** 을 제공한다. 
+    - Dispatcher Servlet, ModelAndView, View Resolver 과 같은 개념을 이용해서 웹 애플리케이션 개발을 쉽게 할 수 있도록 해준다.
+
+- SpringBoot
+    - SpringBoot 가 해결한 핵심은 쉽게 애플리케이션을 구동할 수 있는 것.
+    - **Auto Configuration**
+        - 클래스패스상에 사용가능한 프레임워크와 환경설정을 바라본다. 
+        - 이것들을 기반으로 스프링 부트는 애플리케이션을 이 프레임워크들과 함께 구성하는데 필요한 기본 환경설정을 제공한다.
+
+
+## 29. @SpringBootApplication?
+
+- `@SpringBootApplication` 은 세 가지 어노테이션을 포함한다.
+    - @SpringBootConfiguration, @EnableAutoConfiguration, @ComponentScan
+
+- 참고
+    ```
+    @Target({ElementType.TYPE})
+    @Retention(RetentionPolicy.RUNTIME)
+    @Documented
+    @Inherited
+    @SpringBootConfiguration
+    @EnableAutoConfiguration
+    @ComponentScan(
+        excludeFilters = {@Filter(
+        type = FilterType.CUSTOM,
+        classes = {TypeExcludeFilter.class}
+    ), @Filter(
+        type = FilterType.CUSTOM,
+        classes = {AutoConfigurationExcludeFilter.class}
+    )}
+    )
+    public @interface SpringBootApplication { ... }
+    ```
+
+1. @ComponentScan
+    - 해당 어노테이션이 선언된 하위 패키지에서 @Componet 관련 어노테이션을 찾아 Bean 으로 등록한다.
+
+2. @EnableAutoConfiguration
+    - org.springframework.boot:spring-boot-autoconfigure 의 META-INF 에 spring-factories 파일이 있고, Key 값들과 많은 Class 들을 가지고 있다.
+    - 그들은 @Configuration이라는 Annotation 을 가지고 있고, 이런 명시된 class 들이 AutoConfiguration 의 대상이 된다.
+
+3. @SpringBootConfiguration
+    - 그냥 Configuration 과 비슷한 듯.
+    - SpringBoot 의 Configuration 이다. 정도?
+        - 테스트 어노테이션을 사용할 때 계속 이 어노테이션을 찾기 때문에 스프링 부트에서는 필수 어노테이션이다. 라고 함.
+
