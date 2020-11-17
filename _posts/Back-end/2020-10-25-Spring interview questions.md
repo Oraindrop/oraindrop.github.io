@@ -386,3 +386,30 @@ tags: spring, java
     - SpringBoot 의 Configuration 이다. 정도?
         - 테스트 어노테이션을 사용할 때 계속 이 어노테이션을 찾기 때문에 스프링 부트에서는 필수 어노테이션이다. 라고 함.
 
+
+## 30. SpringBoot 의 Embedded Server 의 의미
+
+- 별도의 WAS 없이, 독립적으로 실행 가능한 Jar.
+
+- SpringBoot 의 AutoConfiguration 에 Embedded Server(Tomcat) 설정과 구동이 포함되어 있기 때문.
+    - org.springframework.boot.autoconfigure.web.servlet.ServletWebServerFactoryAutoConfiguration.java
+
+
+## 31. application.properties
+
+- 이 파일은 스프링부트가 애플리케이션을 구동할 때 자동으로 로딩하는 파일.
+
+- key - value 형식으로 값을 정의하면 애플리케이션에서 참조하여 사용할 수 있다.
+
+- 스프링 부트 사용 시 필요한 옵션들을 작성/추가 할 수 있다.
+    - 이를테면 DB 정보, 로깅 정보, 톰캣 스레드 설정 등등
+
+
+## 32. What is Spring JDBC
+
+- JDBC
+    - 자바에서 데이터베이스에 상호작용을 할 수 있도록 하는 일종의 표준
+
+- Spring JDBC
+    - JDBC 를 쉽게 쓸 수 있도록 도와주는 라이브러리
+    - 반복적인 작업 (Connection, Statement, ResultSet ..) 을 대신해줘서 개발자는 필요한 부분, 핵심 로직만 개발하면 된다.
