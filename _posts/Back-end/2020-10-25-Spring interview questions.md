@@ -413,3 +413,33 @@ tags: spring, java
 - Spring JDBC
     - JDBC 를 쉽게 쓸 수 있도록 도와주는 라이브러리
     - 반복적인 작업 (Connection, Statement, ResultSet ..) 을 대신해줘서 개발자는 필요한 부분, 핵심 로직만 개발하면 된다.
+    
+
+## 33. JDBC vs Spring JDBC
+
+- 위에서 해버렸다.
+
+- Spring JDBC 는 기존 JDBC 의 반복적인 작업을 상당수 대신한다.
+    - Connection 연결 객체 생성/종료
+    - Statement 준비/실행/종료
+    - ResultSet 처리/종료/예외처리 등등
+
+
+## 34. JPA 란?
+
+- JPA 를 알려면 먼저 ORM 을 알아야함.
+
+- ORM 이란
+    - 객체를 DB에 맵핑해주는 거
+    - Object 와 RDB 패러다임의 불일치를 개발자 대신 해결해준다.
+    - 쉽게말해, SQL Query 를 사용하지 않고 다분히 직관적인 코드로 데이터를 조작할 수 있다.
+
+- JPA 는 Java 진영의 ORM 기술표준으로, 인터페이스의 모음이라고 생각하면 됨.
+
+
+## 35. Hibernate 란?
+
+- JPA 인터페이스의 구현체
+- ORM 프레임워크 중 하나
+
+
