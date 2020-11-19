@@ -443,3 +443,19 @@ tags: spring, java
 - ORM 프레임워크 중 하나
 
 
+## 36. Constructor Injection 과 Setter Injection Case 설명
+
+- Setter Injection
+    - 상황에 따라 의존성 주입이 가능하다.
+    - 즉 선택적인 의존성 사용 시 유용하다.
+    - 과거의 스프링(3.x) 에서는 Setter Injection 을 추천했다.
+
+- Constructor Injection
+    - 필수적인 의존성 주입에 유용하다.
+    - 순환 의존성도 알 수 있다.
+    - 현재 스프링에서는 Constructor Injection 을 추천한다.
+
+
+## 37. pom.xml 이란?
+
+- Maven 프로젝트의 구성이 정의된 문서
