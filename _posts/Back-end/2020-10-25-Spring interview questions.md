@@ -459,3 +459,17 @@ tags: spring, java
 ## 37. pom.xml 이란?
 
 - Maven 프로젝트의 구성이 정의된 문서
+
+
+## 38. @RequestParam?
+
+- http request 의 parameter 를 서버에서 데이터를 읽고 바인딩 할 때 사용하는 annotaion
+
+
+## 39. Spring Security 란?
+
+- Spring Security는 Spring 기반의 애플리케이션의 보안(인증과 권한, 인가 등)을 담당하는 스프링 하위 프레임워크이다. 
+
+- 인증과 권한에 대한 부분을 `filter` 흐름에 따라 처리하고 있다. (not Interceptor)
+
+- 보안과 관련된 많은 옵션들을 제공해주어 개발자 입장에서는 일일히 보안 관련 로직을 작성하지 않아도 된다는 장점
