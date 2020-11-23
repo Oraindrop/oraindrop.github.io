@@ -1,10 +1,15 @@
 ---
 layout: post
-title:  "Spring Interview Questions and Answers (작성중)"
+title:  "Top 40 Spring Interview Questions and Answers."
 categories: Back-end
 author : choising
 tags: spring, java
 ---
+
+- 출처 : https://www.greycampus.com/blog/programming/top-spring-interview-questions-and-answers
+
+- 1,2 번 문제는 임의로 변경하였음.
+
 
 ## 1. @Bean vs @Component
 
@@ -473,3 +478,17 @@ tags: spring, java
 - 인증과 권한에 대한 부분을 `filter` 흐름에 따라 처리하고 있다. (not Interceptor)
 
 - 보안과 관련된 많은 옵션들을 제공해주어 개발자 입장에서는 일일히 보안 관련 로직을 작성하지 않아도 된다는 장점
+
+
+## 40. CSRF
+
+- CSRF (Cross Site Request Forgery)
+- 사이트간 요청 위조
+    - 웹 애플리케이션 취약점 중 하나로 사용자가 자신의 의지와 무관하게 공격자가 의도한 행동을 하여 특정 웹페이지를 보안에 취약하게 한다거나, 수정, 삭제, 등록 등의 작업을 하게 만드는 공격방법을 의미합니다.
+
+- 뭐 딱히 정형화된 수법이 있는건 아니고, 의도하지않은 request 는 대강 이거에 해당함.
+
+- 대표적인 방어법
+    - Referrer 검증
+    - CSRF Token
+        - Session
