@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "도서 - Elasticsearch in action (4~작성중)"
+title:  "도서 - Elasticsearch in action (4, 9, 작성중)"
 categories: Book
 author : choising
 tags: java, book, es
@@ -423,5 +423,101 @@ should      | or  | 유사하게 일치하거나 그렇지 않을 수 있다, mi
 ### 4.7 요약
 
 - 필터는 점수 계산을 하지 않고 캐시로 쿼리 성능을 올릴 수 있다.
+
+
+
+## 9장 스케일아웃
+
+현재 필요한 지식은 score 와 관련없는 equal 검색 뿐이므로, 5,6,7,8 장을 skip.
+(사실 6장은 읽긴했는데 필요한 지식 X)
+
+### 9.1 일래스틱서치 클러스터에 노드 추가하기
+
+- 더 많은 처리량을 갖게 되기를 원할 때 가장 쉽게 향상시킬 수 있는 방법
+- 클러스트에 노드를 추가하여 수평적으로 확장
+    - `bin/elasticsearch`
+- health check
+    - `GET /_cluster/health?pretty`
+
+- status
+    - green : 모든 샤드가 정상, 읽기/쓰기 정상
+    - yellow : 일부 or 모두의 replica 샤드가 비정상, 읽기/쓰기 정상이나 primary 샤드에 문제가 생기면 데이터 유실 가능성이 있다.
+    - red : 일부 or 모두의 primary 샤드 비정상, 읽기/쓰기 불가
+    ```
+    curl -XGET localhost:9200/_cat/indices?v // primary 당 replica 몇 개 존재하는 지 확인 가능
+    curl -XGET localhost:9200/_cat/shards?v // 샤드의 상태 체크
+    ```
+
+- 노드가 추가되면, ES는 자동으로 모든 노드에 걸쳐서 샤드들을 균등하게 배분하고자 한다.
+    - 같은 샤드의 primary 와 replica 는 한 노드에 함께 있을 수 없다.
+
+### 9.2 다른 일래스틱서치 노드 발견하기
+
+- 추가한 두 번째 노드가 어떻게 첫 번째 노드를 발견하고 자동으로 클러스터에 조인했을까?
+
+#### 9.2.1 멀티캐스트 디스커버리
+
+- default
+
+- 멀티캐스트로 핑을 보내고 같은 클러스터 이름을 가진 다른 ES 노드로부터 응답을 받게 된다.
+    - elasticsearch.yml 파일의 cluster.name 기본값을 특정한 이름으로 바꿔야 할 듯.
+
+#### 9.2.2 유니캐스트 디스커버리
+
+- 네트워크 전체와 통신하기보다 지정된 노드 목록에 연결
+
+- 의도하지 않은 다른 노드들이 클러스터에 연결되는 상황을 방지
+
+- 다른 노드의 IP 주소와 포트를 지정한다
+    - elasticsearch.yml 파일에 discovery.zen.ping.unicast.hosts: ["", ""]
+    
+#### 9.2.3 마스터 선출 및 장애 감지
+
+- 노드들이 직접 마스터를 선출함
+
+- node.master 값이 false 가 아닌 모든 노드들이 후보
+
+- minimum_master_nodes 는 클러스터에 있는 노드 중 얼마나 많은 노드가 마스터가 될 자격이 있는지
+    - 마스터의 개수가 아닌 마스터 후보 개수
+    - (전체클러스터 노드 수 / 2) + 1 개로 하는걸 권장함 (1 보다 큰 값이어야 스플릿 브레인을 방지할 수 있다고 하는데 잘 모르겠음)
+
+- `GET /_cluster/state/master_node,nodes?pretty`
+
+#### 9.2.4 장애 감지
+
+- discovery.zen.fd.ping_interval(defualt 1s) 마다 핑을 보내고, discovery.zen.fd.ping_timeout(default 30s) 만큼 대기. 그리고 최대 discovery.zen.fd.ping_retries(default 3회) 만큼 재시도 후 노드가 연결이 끊어졌다고 판단
+    - 필요에 따라 샤드 이동 or 마스터 선출 진행
+
+### 9.3 클러스터에서 노드 제거하기
+
+- 노드 해체, 해체된 노드에 있는 모든 샤드를 클러스터 내의 다른 노드로 이동시킨다.
+    ```
+    PUT /_cluster/settings -d ' {
+        "transient": {
+            "cluster.routing.allocation.exclude._ip": "{ip}"
+        }
+    }
+    ```
+
+- 노드 조회
+    ```
+    GET /_nodes?pretty // 노드 목록 조회
+
+    GET /_cluster/state/routing_table,routing_nodes?pretty // 필터링된 클러스터 상태 조회
+    ```
+
+### 9.4 일래스틱서치 노드 업그레이드
+
+
+
+
+
+
+
+
+
+
+
+
 
 
