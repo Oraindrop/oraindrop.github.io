@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "도서 - Elasticsearch in action (4, 9, 작성중)"
+title:  "도서 - Elasticsearch in action (4, 9)"
 categories: Book
 author : choising
 tags: java, book, es
