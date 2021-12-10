@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "인터뷰를 준비해보자. (작성중)"
+title:  "인터뷰를 준비해보자 from. 더개발자 인터뷰 가이드 강의"
 categories: Back-end
 author : choising
 tags: spring, java
